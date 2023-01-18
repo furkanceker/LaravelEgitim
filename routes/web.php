@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,6 +10,10 @@ Route::get('/', function () {
 Route::get('ornek/{isim}',function($isim){
 
     return view('deneme',['isim'=>$isim]);
+});
+Route::get('form',function(){
+
+    return view('form');
 });
 
 Route::get('web',function(){
@@ -24,3 +29,6 @@ Route::get('web',function(){
 
     return view('web',$data);
 });
+Route::post('sonuc', function(Request $request){
+    return $request->input('mesaj');
+})->name('sonuc');
